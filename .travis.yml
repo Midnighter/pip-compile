@@ -18,9 +18,9 @@ before_install:
 - echo ${DOCKER_PASSWORD} | docker login --username midnighter --password-stdin
 script:
 - IMAGE=${IMAGE} TAG=${TAG} make build
-- docker tag "${IMAGE}:${TAG}" "${IMAGE}:${TAG}-${HASH_TAG}"
+- docker tag ${IMAGE}:${TAG} ${IMAGE}:${TAG}-${HASH_TAG}
 after_success:
-- docker push ${IMAGE}:${HASH_TAG}
+- docker push ${IMAGE}:${TAG}-${HASH_TAG}
 - docker push ${IMAGE}:${TAG}
 notifications:
   email:
