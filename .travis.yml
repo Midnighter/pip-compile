@@ -1,0 +1,29 @@
+sudo: required
+language: minimal
+git:
+  depth: 2
+services:
+- docker
+branches:
+  only:
+  - master
+env:
+  global:
+  - IMAGE=midnighter/pip-compile
+  - HASH_TAG=${TRAVIS_COMMIT::12}
+  matrix:
+  - TAG=3.6-alpine3.10
+  - TAG=3.7-alpine3.10
+before_install:
+- echo ${DOCKER_PASSWORD} | docker login --username midnighter --password-stdin
+script:
+- IMAGE=${IMAGE} TAG=${TAG} make build
+- docker tag "${IMAGE}:${TAG}" "${IMAGE}:${HASH_TAG}"
+after_success:
+- docker push ${IMAGE}:${HASH_TAG}
+- docker push ${IMAGE}:${TAG}
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+    on_pull_requests: never
