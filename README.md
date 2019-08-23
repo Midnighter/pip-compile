@@ -1,5 +1,8 @@
 # Minimal Environment for `pip-compile`
 
+[![master Build Status](https://travis-ci.org/Midnighter/pip-compile.svg?branch=master)](https://travis-ci.org/Midnighter/pip-compile)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blueviolet)](https://opensource.org/licenses/Apache-2.0)
+
 A minimal [Docker image](Dockerfile) that provides a Python environment with
 [`pip-tools`](https://pypi.org/project/pip-tools/) in order to lock requirements
 files.
@@ -19,8 +22,9 @@ in this example `./requirements.txt`.
 
 ## Python Environments
 
-Images are generated for the following environments. Please [open an issue]() if
-you require others.
+Images are generated for the following environments. Please [open an
+issue](https://github.com/Midnighter/pip-compile/issues/new) if you require
+others.
 
 | Tag | Python | Distribution |
 | --- | ------ | ------------ |
