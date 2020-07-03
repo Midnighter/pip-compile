@@ -1,7 +1,7 @@
 # Minimal Environment for `pip-compile`
 
 [![Docker image CI](https://github.com/Midnighter/pip-compile/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/Midnighter/pip-compile/actions)
-[![Docker image pulls](https://img.shields.io/docker/pulls/midnighter/pip-compile)](https://cloud.docker.com/repository/docker/midnighter/pip-compile/)
+[![Docker image pulls](https://img.shields.io/docker/pulls/midnighter/pip-compile)](https://hub.docker.com/r/midnighter/pip-compile)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blueviolet)](https://opensource.org/licenses/Apache-2.0)
 
 A minimal Docker image that provides a Python environment with
