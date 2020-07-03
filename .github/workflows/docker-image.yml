@@ -32,3 +32,8 @@ jobs:
         build_args: TAG=${{ matrix.tag }}
         labels: org.opencontainers.image.authors=midnighter@posteo.net,org.opencontainers.image.vendor=Moritz E. Beber,org.opencontainers.image.licenses=Apache-2.0
         add_git_labels: true
+    - uses: peter-evans/dockerhub-description@v2
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKERHUB_REPOSITORY: midnighter/pip-compile
