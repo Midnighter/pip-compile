@@ -1,4 +1,4 @@
-# Copyright (c) 2019, Moritz E. Beber. All rights reserved.
+# Copyright (c) 2019, Moritz E. Beber.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,11 +18,17 @@ FROM python:${TAG}
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /opt
+WORKDIR /opt/requirements
 
 RUN set -eux \
-    && apk add --no-cache build-base ca-certificates libffi-dev openssl-dev \
+    && apk add --no-cache \
+        build-base \
+        ca-certificates \
+        libffi-dev \
+        openssl-dev \
+        postgresql-dev \
+        yaml-dev \
     && pip install --upgrade pip setuptools wheel pip-tools \
     && rm -rf /root/.cache/pip
 
-ENTRYPOINT ["pip-compile", "--verbose", "--generate-hashes"]
+ENTRYPOINT ["pip-compile", "--generate-hashes"]
