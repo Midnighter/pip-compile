@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ stable ]
+  schedule:
+    - cron: '0 12 15 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - tag: 3.8-alpine3.12
+            directory: alpine
+          - tag: 3.8-slim-buster
+            directory: debian
+    steps:
+    - uses: actions/checkout@v2
+    - uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: midnighter/pip-compile
+        tags: ${{ matrix.tag }},${{ matrix.tag }}_$(date --iso-8601=date)
+        path: ${{ matrix.directory }}
+        build_args: TAG=${{ matrix.tag }}
