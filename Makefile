@@ -1,17 +1,16 @@
-.PHONY: build
-
 ################################################################################
 # Variables                                                                    #
 ################################################################################
 
 # Get the image tag from the environment, argument, or default value.
 IMAGE ?= midnighter/pip-compile
-TAG ?= 3.7-alpine3.10
+TAG ?= 3.8-alpine3.12
 
 ################################################################################
 # Commands                                                                     #
 ################################################################################
 
+.PHONY: build
 ## Build the local docker image.
 build:
 	docker build --build-arg TAG=$(TAG) --tag $(IMAGE):$(TAG) .
